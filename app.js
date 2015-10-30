@@ -1,16 +1,31 @@
-angular.module('flapperNews', [])
+angular.module('flapperNews', ['ui.router'])
+.config([
+	'$stateProvider',
+	'$urlRouterProvider',
+	function($stateProvider, $urlRouterProvider) {
+		$stateProvider
+			.state('home', {
+				url: '/home',
+				templateUrl: '/home.html',
+				controller: 'MainCtrl'
+			});
+		$urlRouterProvider.otherwise('home');
+	}
+])
+.factory('posts', [function() {
+	// service body
+	var o = {
+		posts: []
+	};
+	return o;
+}])
 .controller('MainCtrl', [
 	'$scope',
-	function($scope) {
+	'posts',
+	function($scope, posts) {
 		$scope.test = 'Hello world!';
 		
-		$scope.posts = [
-			{title:'post 1', link:"http://allrecipes.co.uk", upvotes: 50},
-			{title:'post 2', upvotes: 20},
-			{title:'post 3', upvotes: 150},
-			{title:'post 4', upvotes: 90},
-			{title:'post 5', upvotes: 40}
-		];
+		$scope.posts = posts.posts;
 		
 		$scope.addPost = function() {
 			if (!$scope.title || $scope.title ==='') {
