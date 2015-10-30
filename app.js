@@ -5,7 +5,7 @@ angular.module('flapperNews', [])
 		$scope.test = 'Hello world!';
 		
 		$scope.posts = [
-			{title:'post 1', upvotes: 50},
+			{title:'post 1', link:"http://allrecipes.co.uk", upvotes: 50},
 			{title:'post 2', upvotes: 20},
 			{title:'post 3', upvotes: 150},
 			{title:'post 4', upvotes: 90},
