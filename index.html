@@ -35,8 +35,12 @@
 				{{test}}
 		</div>
 		<form ng-submit="addPost()">
-			<input type="text" ng-model="title"></input>
+			<input type="text" placeholder="Title" ng-model="title"></input>
+			<br>
+			<input type="text" placeholder="Link" ng-model="link"></<input>
+			<br>
 			<button type="submit" class="actionButton">Post</button>
+			<br>
 			<p ng-model="errormessage" class="formError" ></p>
 		</form>
 

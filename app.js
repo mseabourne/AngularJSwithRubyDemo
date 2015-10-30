@@ -15,10 +15,13 @@ angular.module('flapperNews', [])
 		$scope.addPost = function() {
 			if (!$scope.title || $scope.title ==='') {
 				$scope.errormessage = "A title must be entered.";
-				$scope.title = "foo bars"
 			} else {
-				$scope.posts.push({title: $scope.title, upvotes: 0});	
+				$scope.posts.push({
+					title: $scope.title, 
+					link: $scope.link,
+					upvotes: 0});	
 				$scope.title = "";
+				$scope.link = "";
 			}
 		};
 		
