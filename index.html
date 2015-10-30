@@ -4,8 +4,29 @@
 		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js"></script>
 		<script src="app.js"></script>
 		<style>
+			body {
+				margin: 0;
+				padding: 0;
+			}
+
 			.actionButton {
 				margin: 5px;
+			}
+			.formError {
+				color: red;
+			}
+			.upVoteButton {
+				width: 30px;
+				background-color: lightcoral;
+				text-align: center;
+				display: inline-block;
+			}
+			.postContainer {
+				display: inline-block;
+				margin-bottom: 3px;
+			}
+			.postContent {
+				display: inline-block;
 			}
 		</style>	
 	</head>
@@ -15,11 +36,15 @@
 		</div>
 		<form ng-submit="addPost()">
 			<input type="text" ng-model="title"></input>
-			<button type="submit" class="actionButton" ng-click="addPost()">Post</button>
+			<button type="submit" class="actionButton">Post</button>
+			<p ng-model="errormessage" class="formError" ></p>
 		</form>
 
-		<div ng-repeat="post in posts | orderBy: '-upvotes'">
-			{{post.title | uppercase}} - upvotes: {{post.upvotes}}
+		<div ng-repeat="post in posts | orderBy: '-upvotes'" >
+			<div class="postContainer">
+				<div class="upvoteButton" ng-click="incrementUpvotes(post)"><span >^</span></div>
+				<div class="postContent">{{post.title | uppercase}} - upvotes: {{post.upvotes}}</div>
+			</div>
 		</div>		
 	</body>
 </html>

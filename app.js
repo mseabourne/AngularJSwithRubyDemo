@@ -13,8 +13,17 @@ angular.module('flapperNews', [])
 		];
 		
 		$scope.addPost = function() {
-			$scope.posts.push({title: 'A new post', upvotes: 0});	
-			console.debug("foo");
+			if (!$scope.title || $scope.title ==='') {
+				$scope.errormessage = "A title must be entered.";
+				$scope.title = "foo bars"
+			} else {
+				$scope.posts.push({title: $scope.title, upvotes: 0});	
+				$scope.title = "";
+			}
+		};
+		
+		$scope.incrementUpvotes = function(post) {
+			post.upvotes += 1;	
 		};
 	}
 ]);
