@@ -20,7 +20,10 @@ angular.module('flapperNews', ['ui.router'])
 .factory('posts', [function() {
 	// service body
 	var o = {
-		posts: []
+		posts: [
+			{title: 'My first post.', link:'http://allrecipes.co.uk', upvotes: 0,
+			comments: [] }
+		]
 	};
 	return o;
 }])
@@ -72,6 +75,10 @@ angular.module('flapperNews', ['ui.router'])
 			});
 			
 			$scope.body = '';
+		};
+		
+		$scope.incrementUpvotes = function(comment) {
+			comment.upvotes += 1;	
 		};
 	}
 ]);
