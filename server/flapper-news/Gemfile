@@ -30,3 +30,6 @@ gem 'sdoc', '~> 0.4.0',        group: :doc
 gem 'tzinfo-data', platforms: [:mingw, :mswin]
 
 gem 'angular-rails-templates'
+
+# workaround for csrf token
+gem 'angular_rails_csrf'

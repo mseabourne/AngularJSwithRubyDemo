@@ -12,21 +12,28 @@ angular.module('flapperNews')
 			if (!$scope.title || $scope.title ==='') {
 				$scope.errormessage = "A title must be entered.";
 			} else {
-				$scope.posts.push({
-					title: $scope.title, 
+				posts.create({
+					title: $scope.title,
 					link: $scope.link,
-					upvotes: 0,
-					comments: [
-						{author: 'Joe', body: 'Cool post bro!', upvotes: 0},
-						{author: 'Bim', body: 'Wow. You are really killing it today', upvotes:0}
-					]});	
+					upvotes: 0
+				});
+				
+				// $scope.posts.push({
+				// 	title: $scope.title, 
+				// 	link: $scope.link,
+				// 	upvotes: 0,
+				// 	comments: [
+				// 		{author: 'Joe', body: 'Cool post bro!', upvotes: 0},
+				// 		{author: 'Bim', body: 'Wow. You are really killing it today', upvotes:0}
+				// 	]});	
 				$scope.title = "";
 				$scope.link = "";
 			}
 		};
 		
 		$scope.incrementUpvotes = function(post) {
-			post.upvotes += 1;	
+			//post.upvotes += 1;	
+			posts.upvote(post);
 		};
 	}
 ]);
